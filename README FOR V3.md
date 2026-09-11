@@ -1,16 +1,33 @@
----
-tags:
-  - 程序
-  - agent
-  - python
-created: 2026-09-08
----
-
 # Agnes AI Agent v2
 
 一个有自主性的 CLI AI agent，支持文件操作、命令执行、自定义 Skill 加载——用任何 OpenAI 兼容的 API（Claude、DeepSeek、Qwen 等），随时切换模型和服务商，甚至运行时不重启就能换 API 密钥。
 
-## 快速开始
+## v3 新特性：启动向导（免记事本配置）
+
+v3 不再要求你打开记事本改代码或环境变量。**只要没有 API Key，一启动就会弹出交互向导**：
+
+```
+$ python3 agent-v3.py
+
+  还没有配置服务商，跟着提示选一下吧（几秒钟搞定）。
+
+  可用预设：
+    1. agnes    (https://api.agnes-ai.cn/v1/chat/completions, 默认模型 agnes-2.5-flash)
+    2. openai   (https://api.openai.com/v1/chat/completions, 默认模型 gpt-4o-mini)
+    3. deepseek (https://api.deepseek.com/v1/chat/completions, 默认模型 deepseek-chat)
+    4. 自定义（自己填 URL / Model / Key）
+
+  选一个 [1-4]，直接回车默认选 1：
+```
+
+- 选 1-3：自动套用对应预设的 URL 和默认模型，只需再输入 Key
+- 选 4：自己依次填 API 地址、模型名称、Key，全自定义、不挑服务商
+- Key 是必填项，留空会一直重新问，不会放你带着空 Key 进去然后一堆 401
+
+**运行中随时想换服务商？** 敲 `/setup`，同样的向导会再跑一遍——如果已经有 Key，会先问你要不要换，回车就是保留原 Key，不用重新输一遍。
+
+这样一来，`--api` / `--model` / `--key` 这些命令行参数和环境变量依然可以用（适合写自动化脚本），但对日常使用者来说，**双击运行或者 `python3 agent-v3.py` 直接跑，全程问答式完成配置，不用碰任何配置文件。**
+
 
 ### 最简单的方式
 
