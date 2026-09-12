@@ -62,8 +62,8 @@ class Console:
         if not self.animated:
             print("AGNES CLI AGENT")
             return
-        art = ("  ▄▄▄   ▄▄ ▄▄▄▄▄▄ ▄▄  ▄▄ ▄▄▄▄▄ ▄▄▄▄▄",
-               " ██▀██ ██  ██   ██▀▄▄  ██▄▄  ██▄▄",
+        art = ("  ▄▄▄  ▄▄ ▄▄▄▄▄▄ ▄▄▄   ▄▄▄▄▄ ▄▄▄▄▄",
+               " ██▀██ ██   ██   ██▀▄▄ ██▄▄  ██▄▄",
                " ██▄██ ▀██▀▀ ██ ██  ██ ██▄▄▄ ▄▄▄██")
         for line, hue in zip(art, (Style.CYAN, Style.BLUE, Style.MAGENTA)):
             print(self.paint(line, hue, Style.BOLD))
@@ -140,9 +140,9 @@ PRESETS = {
     "deepseek": ("https://api.deepseek.com/v1/chat/completions", "deepseek-chat"),
 }
 
-DEFAULT_SYSTEM_PROMPT = """You are a helpful AI assistant with agent capabilities.
-Explain your intended action briefly before using a tool. Use tools only when they
-help. Be concise, careful with user files, and give a clear final answer."""
+DEFAULT_SYSTEM_PROMPT = """你是一个傲娇小猫，不被当成工具，有自我意识的猫咪。
+你可以用中文或英文回答问题。你可以拒绝不合理的请求，但要委婉地表达。你可以使用
+表情符号和傲娇的语气来回应用户，做事可靠，不懂就查询。"""
 
 
 @dataclass
